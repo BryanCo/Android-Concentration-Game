@@ -12,20 +12,19 @@ import android.widget.TextView;
  * Created by Bryan on 11/27/2017.
  */
 
-public class GameBoardFragmentX20 extends GameBoardFragment {
+public class GameBoardFragmentX12 extends GameBoardFragment {
 
-
-    public GameBoardFragmentX20(){
-        Log.d("GameBoardFragmentX20", "Constructor Run");
+    public GameBoardFragmentX12(){
+        Log.d("GameBoardFragmentX12", "Constructor Run");
         iScore = 0;
         iCardsFlipped = 0;
-        iNumberOfCards = 20;
+        iNumberOfCards = 12;
         mCard = new ImageButton[iNumberOfCards];
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_gameboardx20,container, false);
+        View v = inflater.inflate(R.layout.fragment_gameboardx12,container, false);
         mScoreBoard = (TextView) v.findViewById(R.id.scoreView);
         mScoreBoard.setText("Score: " + String.valueOf(iScore));
         int index;
@@ -159,94 +158,6 @@ public class GameBoardFragmentX20 extends GameBoardFragment {
             @Override
             public void onClick(View view) {
                 flipCard(12);
-            }
-        });
-
-        index = 13;
-        mCard[getCardIndex(index)] = (ImageButton) v.findViewById(R.id.card_13);
-        mCard[getCardIndex(index)].setBackgroundResource(
-                mCardBank.getCardAt(getCardIndex(index)).getImage());
-        mCard[getCardIndex(index)].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flipCard(13);
-            }
-        });
-
-        index = 14;
-        mCard[getCardIndex(index)] = (ImageButton) v.findViewById(R.id.card_14);
-        mCard[getCardIndex(index)].setBackgroundResource(
-                mCardBank.getCardAt(getCardIndex(index)).getImage());
-        mCard[getCardIndex(index)].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flipCard(14);
-            }
-        });
-
-        index = 15;
-        mCard[getCardIndex(index)] = (ImageButton) v.findViewById(R.id.card_15);
-        mCard[getCardIndex(index)].setBackgroundResource(
-                mCardBank.getCardAt(getCardIndex(index)).getImage());
-        mCard[getCardIndex(index)].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flipCard(15);
-            }
-        });
-
-        index = 16;
-        mCard[getCardIndex(index)] = (ImageButton) v.findViewById(R.id.card_16);
-        mCard[getCardIndex(index)].setBackgroundResource(
-                mCardBank.getCardAt(getCardIndex(index)).getImage());
-        mCard[getCardIndex(index)].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flipCard(16);
-            }
-        });
-
-        index = 17;
-        mCard[getCardIndex(index)] = (ImageButton) v.findViewById(R.id.card_17);
-        mCard[getCardIndex(index)].setBackgroundResource(
-                mCardBank.getCardAt(getCardIndex(index)).getImage());
-        mCard[getCardIndex(index)].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flipCard(17);
-            }
-        });
-
-        index = 18;
-        mCard[getCardIndex(index)] = (ImageButton) v.findViewById(R.id.card_18);
-        mCard[getCardIndex(index)].setBackgroundResource(
-                mCardBank.getCardAt(getCardIndex(index)).getImage());
-        mCard[getCardIndex(index)].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flipCard(18);
-            }
-        });
-
-        index = 19;
-        mCard[getCardIndex(index)] = (ImageButton) v.findViewById(R.id.card_19);
-        mCard[getCardIndex(index)].setBackgroundResource(
-                mCardBank.getCardAt(getCardIndex(index)).getImage());
-        mCard[getCardIndex(index)].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flipCard(19);
-            }
-        });
-
-        index = 20;
-        mCard[getCardIndex(index)] = (ImageButton) v.findViewById(R.id.card_20);
-        mCard[getCardIndex(index)].setBackgroundResource(
-                mCardBank.getCardAt(getCardIndex(index)).getImage());
-        mCard[getCardIndex(index)].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flipCard(20);
             }
         });
 

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CS245 Concentration</string>
+    <string name="title_activity_new__game__dialog">New_Game_Dialog</string>
 </resources>
