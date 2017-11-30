@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">CS245 Concentration</string>
     <string name="title_activity_new__game__dialog">New_Game_Dialog</string>
+    <string name="mute">Mute</string>
+    <string name="play">Play</string>
+    <string name="new_game">New Game</string>
+    <string name="end_game">End Game</string>
+    <string name="try_again">Try Again</string>
+    <string name="high_score">High Score</string>
+    <string name="enter_your_name">Enter Your Name:</string>
+    <string name="name">Name</string>
+    <string name="ok">OK</string>
 </resources>

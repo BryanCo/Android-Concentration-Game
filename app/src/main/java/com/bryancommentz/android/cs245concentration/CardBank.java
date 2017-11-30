@@ -5,18 +5,31 @@ import android.util.Log;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Created by Bryan on 11/25/2017.
- */
+/***************************************************************
+ * file: CardBank.java
+ * author: Bryan Commentz
+ *
+ * assignment: program 2 Android Project
+ * date last modified: 11/20/2017
+ *
+ * purpose: CardBank is a singlton that generated and holds a
+ * set of paired cards. It constitutes the persistant model for
+ * GameBoardFragment (which constitutes the controller layer).
+ *
+ ****************************************************************/
 
 public class CardBank {
     private static CardBank sCardBank;
     private Card[] mCards;
 
+    //This is a singleton so it has a private constructor
     private CardBank(){
         newSetOfCards(20);
     }
 
+    //This is a singleton so it needs a get method to return itself
+    // or create itself if not done so already.
+    //It uses a synchronized to ensure two of itself are not made.
     public static CardBank get(){
         if(sCardBank == null){
             synchronized (CardBank.class){
@@ -31,6 +44,8 @@ public class CardBank {
         return sCardBank;
     }
 
+    //when a new set of cards are needed this singleton still persists
+    //so it generates a new set.
     public void newSetOfCards(int numberOfCards){
         if((numberOfCards % 4) == 0 && numberOfCards >= 4) {
             mCards = new Card[numberOfCards];
@@ -122,6 +137,7 @@ public class CardBank {
 
     }
 
+    //Returns a specific card the CardBank is holding.
     public Card getCardAt(int index){
         return mCards[index];
     }

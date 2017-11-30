@@ -8,11 +8,20 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-/**
- * Created by Bryan on 11/27/2017.
- */
+/***************************************************************
+ * file: GameBoardFragmentX4.java
+ * author: Bryan Commentz
+ *
+ * assignment: program 2 Android Project
+ * date last modified: 11/20/2017
+ *
+ * purpose: This is the 4 card child of GameBoardFragment
+ *
+ ****************************************************************/
 
 public class GameBoardFragmentX4 extends GameBoardFragment {
+
+    //This is the constructor
     public GameBoardFragmentX4(){
         Log.d("GameBoardFragmentX4", "Constructor Run");
         iScore = 0;
@@ -21,6 +30,7 @@ public class GameBoardFragmentX4 extends GameBoardFragment {
         mCard = new ImageButton[iNumberOfCards];
     }
 
+    //create a view with 4 cards
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_gameboardx4, container, false);

@@ -8,12 +8,20 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-/**
- * Created by Bryan on 11/27/2017.
- */
+/***************************************************************
+ * file: GameBoardFragmentX12.java
+ * author: Bryan Commentz
+ *
+ * assignment: program 2 Android Project
+ * date last modified: 11/20/2017
+ *
+ * purpose: This is the 12 card child of GameBoardFragment
+ *
+ ****************************************************************/
 
 public class GameBoardFragmentX12 extends GameBoardFragment {
 
+    //This is the constructor
     public GameBoardFragmentX12(){
         Log.d("GameBoardFragmentX12", "Constructor Run");
         iScore = 0;
@@ -22,6 +30,7 @@ public class GameBoardFragmentX12 extends GameBoardFragment {
         mCard = new ImageButton[iNumberOfCards];
     }
 
+    //create a view with 12 cards
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_gameboardx12,container, false);

@@ -1,8 +1,7 @@
 package com.bryancommentz.android.cs245concentration;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
@@ -11,18 +10,52 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/***************************************************************
+ * file: MainActivity.java
+ * author: Bryan Commentz
+ *
+ * assignment: program 2 Android Project
+ * date last modified: 11/20/2017
+ *
+ * purpose: This is the MainActivity
+ *
+ ****************************************************************/
+
 public class MainActivity extends FragmentActivity {
     private Button try_again;
     private Button new_game;
     private Button end_game;
+    private Button mute_button;
     private FragmentManager fm;
     private GameBoardFragment mFragment;
+    private AudioPlayer mPlayer;
+    private boolean muteState;
+
+    //put the HighScores fragment into the fragment manager.
+    public void showHighScores(){
+        Log.d("mainActivity", "showHighScores()");
+        mFragment = new HighScores();
+        fm.beginTransaction().replace(R.id.fragment_container, mFragment).commit();
+    }
+
+    protected void muteSound(){
+        if(muteState){
+            mPlayer.play(this);
+        }else {
+            mPlayer.stop();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("MainActivity", "onCreate()");
         setContentView(R.layout.activity_main);
+        mPlayer = AudioPlayer.get();
+        muteState = true;
+        if(savedInstanceState != null){
+            muteState = savedInstanceState.getBoolean("MuteStateIndex", true);
+        }
 
         fm = getSupportFragmentManager();
         mFragment = (GameBoardFragment) fm.findFragmentById(R.id.fragment_container);
@@ -40,12 +73,13 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
+        //When "New Game" is pressed show a dialog asking for how many cards should be used
         new_game = (Button) findViewById(R.id.new_game);
         new_game.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final Dialog d = new Dialog(MainActivity.this);
-                d.setContentView(R.layout.activity_new_game_dialog);
+                d.setContentView(R.layout.dialog_new_game_dialog);
                 final TextView display = (TextView) d.findViewById(R.id.display);
                 d.show();
 
@@ -105,5 +139,30 @@ public class MainActivity extends FragmentActivity {
                 mFragment.endGame();
             }
         });
+
+        mute_button = (Button) findViewById(R.id.mute_sound);
+
+        if(muteState){
+            mute_button.setText("Play");
+        }
+        mute_button.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        muteSound();
+                        if(muteState){
+                            mute_button.setText("Mute");
+                            muteState = false;
+                        }else {
+                            mute_button.setText("Play");
+                            muteState = true;
+                        }
+                    }
+                });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("MuteStateIndex", muteState);
     }
 }
